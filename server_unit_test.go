@@ -60,8 +60,8 @@ func TestLogEvent(t *testing.T) {
 	srv.LogEvent("fakeaction2", "fakeid", "fakeimage")
 
 	numEvents := len(srv.GetEvents())
-	if numEvents != 2 {
-		t.Fatalf("Expected 2 events, found %d", numEvents)
+	if numEvents != 3 {
+		t.Fatalf("Expected 3 events, found %d", numEvents)
 	}
 	go func() {
 		time.Sleep(200 * time.Millisecond)
