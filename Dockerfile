@@ -24,7 +24,7 @@
 #
 
 docker-version	0.6.1
-FROM	stackbrew/ubuntu:13.10
+FROM	ubuntu:13.10
 MAINTAINER	Tianon Gravi <admwiggin@gmail.com> (@tianon)
 
 # Packaged dependencies
@@ -32,6 +32,7 @@ RUN	apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
 	apt-utils \
 	aufs-tools \
 	automake \
+	btrfs-tools \
 	build-essential \
 	curl \
 	dpkg-sig \
@@ -40,7 +41,6 @@ RUN	apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
 	libapparmor-dev \
 	libcap-dev \
 	libsqlite3-dev \
-	linux-libc-dev \
 	mercurial \
 	reprepro \
 	ruby1.9.1 \
