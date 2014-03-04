@@ -1,0 +1,4 @@
+default:
+  hipaches: ["$DOCKER_SERVER:6379"]
+  daemons: ["$DOCKER_SERVER:4243"]
+  use_ssh: False

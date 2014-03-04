@@ -1,0 +1,24 @@
+docker-ci:
+  image: "docker-ci/docker-ci"
+  release_name: "$RELEASE_NAME"
+  ports: ["80","$GITHUB_EXTERNAL_PORT:$GITHUB_PORT","2222:2222"]
+  register: "80"
+  volumes: ["/run:/var/socket","/home/docker-ci:/data/docker-ci"]
+  command: []
+  env:
+    - "%DEPLOYMENT"
+    - "%WEB_PORT"
+    - "%GITHUB_PORT"
+    - "%IRC_CHANNEL"
+    - "%WEB_USER"
+    - "%WEB_IRC_PWD"
+    - "%BUILDBOT_PWD"
+    - "%BACKUP_BUCKET"
+    - "%BACKUP_AWS_ID"
+    - "%BACKUP_AWS_SECRET"
+    - "%AWS_ACCESS_KEY"
+    - "%AWS_SECRET_KEY"
+    - "%GPG_PASSPHRASE"
+    - "%SMTP_USER"
+    - "%SMTP_PWD"
+    - "%EMAIL_RCP"

@@ -6,6 +6,9 @@ dpkg-reconfigure --frontend noninteractive tzdata
 
 # Set ssh superuser
 mkdir -p /data/buildbot /var/run/sshd /run
+chmod 755 /var/run/sshd
+chmod 4755 /usr/bin/sudo
+chmod 4755 /usr/bin/newgrp
 useradd -m -d /home/sysadmin -s /bin/bash -G sudo,docker -p '*' sysadmin
 sed -Ei 's/(\%sudo.*) ALL/\1 NOPASSWD:ALL/' /etc/sudoers
 cd /home/sysadmin
@@ -50,5 +53,5 @@ user=sysadmin\n" > \
     /etc/supervisor/conf.d/buildbot.conf
 /bin/echo -e "[program:nginx]\ncommand=/usr/sbin/nginx\n" > \
     /etc/supervisor/conf.d/nginx.conf
-/bin/echo -e "[program:sshd]\ncommand=/usr/sbin/sshd -D\n" > \
+/bin/echo -e "[program:sshd]\ncommand=/usr/sbin/sshd -D -p 2222\n" > \
     /etc/supervisor/conf.d/sshd.conf

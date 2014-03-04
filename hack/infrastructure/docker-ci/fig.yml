@@ -1,0 +1,27 @@
+dockerci:
+  image: docker-ci/docker-ci
+  ports:
+    - 2222:2222
+    - 80:80
+    - $WEB_PORT:$WEB_PORT
+    - $GITHUB_EXTERNAL_PORT:$GITHUB_PORT
+  volumes:
+    - /run:/var/socket
+    - /home/docker-ci:/data/docker-ci
+  environment:
+    DEPLOYMENT: $DEPLOYMENT
+    WEB_PORT: $WEB_PORT
+    GITHUB_PORT: $GITHUB_PORT
+    IRC_CHANNEL: $IRC_CHANNEL
+    WEB_USER: $WEB_USER
+    WEB_IRC_PWD: $WEB_IRC_PWD
+    BUILDBOT_PWD: $BUILDBOT_PWD
+    BACKUP_BUCKET: $BACKUP_BUCKET
+    BACKUP_AWS_ID: $BACKUP_AWS_ID
+    BACKUP_AWS_SECRET: $BACKUP_AWS_SECRET
+    AWS_ACCESS_KEY: $AWS_ACCESS_KEY
+    AWS_SECRET_KEY: $AWS_SECRET_KEY
+    GPG_PASSPHRASE: $GPG_PASSPHRASE
+    SMTP_USER: $SMTP_USER
+    SMTP_PWD: $SMTP_PWD
+    EMAIL_RCP: $EMAIL_RCP

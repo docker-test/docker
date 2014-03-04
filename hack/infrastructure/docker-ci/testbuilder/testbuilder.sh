@@ -35,6 +35,8 @@ echo "Git commit: $(git rev-parse HEAD)"
 git fetch -q $REPO $BRANCH
 git merge --no-edit $COMMIT
 
-# Build the project dockertest
-/testbuilder/$PROJECT.sh $PROJECT_PATH
+# Build and run the test
+/testbuilder/$PROJECT.sh $PROJECT_PATH; exit_status=$?
 rm -rf /data/$PROJECT_PATH
+
+exit $exit_status
